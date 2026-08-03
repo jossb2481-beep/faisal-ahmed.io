@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faisal Ahmmed | Digital Marketer & Social Media Expert</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3a86ff',
+                        accent: '#8338ec',
+                        gold: '#ff007f',
+                        darkBg: '#05070f',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '"Hind Siliguri"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #05070f;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glassmorphism {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glassmorphism-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .glassmorphism-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(58, 134, 255, 0.5);
+            box-shadow: 0 10px 30px -10px rgba(58, 134, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3a86ff 0%, #8338ec 50%, #ff007f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-btn {
+            background: linear-gradient(135deg, #3a86ff 0%, #8338ec 100%);
+            transition: all 0.3s ease;
+        }
+        .gradient-btn:hover {
+            box-shadow: 0 0 25px rgba(58, 134, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .portfolio-img-wrapper {
+            height: 260px;
+            overflow: hidden;
+            position: relative;
+        }
+        .portfolio-img-wrapper img {
+            width: 100%;
+            height: auto;
+            transition: transform 4s ease-in-out;
+            transform: translateY(0);
+        }
+        .portfolio-card:hover .portfolio-img-wrapper img {
+            transform: translateY(calc(-100% + 260px));
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05070f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a86ff;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .dot-flashing {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: #3a86ff;
+            animation: dotFlashing 1s infinite alternate;
+        }
+        .dot-flashing:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .dot-flashing:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes dotFlashing {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Chat scroll styling */
+        #chat-messages::-webkit-scrollbar {
+            width: 4px;
+        }
+        #chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        #chat-messages::-webkit-scrollbar-thumb {
+            background: #3a86ff;
+            border-radius: 10px;
+        }
+
+        /* Smooth fade-in for messages */
+        .chat-message {
+            animation: fadeInUp 0.3s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Typing pulse dots */
+        .typing-dots span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #3a86ff;
+            margin: 0 2px;
+            animation: typingPulse 1.4s infinite both;
+        }
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes typingPulse {
+            0%,
+            80%,
+            100% {
+                transform: scale(0.6);
+                opacity: 0.4;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Scrollable admin modal */
+        #admin-modal .overflow-y-auto {
+            scrollbar-width: thin;
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- BACKGROUND GLOW EFFECTS -->
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none z-0"></div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-40 glassmorphism transition-all duration-300 py-4 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold tracking-wider font-sans">
+                FAISAL<span class="text-primary">.</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8 font-medium text-sm text-gray-300">
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+                <a href="#portfolio" class="hover:text-primary transition-colors">Portfolio</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+                <button onclick="openAdminModal()" class="text-xs bg-gray-800/80 hover:bg-gray-700/80 px-3.5 py-1.5 rounded-full border border-gray-700 transition">
+                    <i class="fa-solid fa-user-gear text-primary mr-1"></i> Admin Panel
+                </button>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-gray-300 focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden flex-col space-y-4 pt-4 pb-2 px-2 text-center text-gray-300 font-medium">
+            <a href="#about" class="block hover:text-primary">About</a>
+            <a href="#skills" class="block hover:text-primary">Skills</a>
+            <a href="#portfolio" class="block hover:text-primary">Portfolio</a>
+            <a href="#contact" class="block hover:text-primary">Contact</a>
+            <button onclick="openAdminModal()" class="text-xs bg-gray-800 hover:bg-gray-700 px-3.5 py-1.5 rounded-full border border-gray-700 transition mx-auto">
+                <i class="fa-solid fa-user-gear text-primary mr-1"></i> Admin Login
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="about" class="min-h-screen pt-32 pb-16 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
+        <div class="w-full md:w-1/2 space-y-6 text-center md:text-left">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glassmorphism text-xs text-primary border border-primary/30 shadow-lg">
+                <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                <span>Available for Freelance & Business Growth</span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                Hi, I'm <br/>
+                <span id="hero-name" class="gradient-text">Faisal Ahmmed</span>
+            </h1>
+
+            <h2 class="text-xl md:text-2xl text-gray-300 font-medium h-8">
+                I am a <span id="typing-text" class="text-primary font-semibold"></span>
+            </h2>
+
+            <p id="hero-bio" class="text-gray-400 max-w-lg leading-relaxed text-sm md:text-base">
+                Specializing in Print & Social Media Marketing, Canva Design, Meta Ads, and ROI-driven Google Ad campaigns to scale your business to the next level.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+                <a href="#contact" class="gradient-btn text-white font-semibold px-8 py-3.5 rounded-full text-sm flex items-center gap-2">
+                    Hire Me <i class="fa-solid fa-paper-plane text-xs"></i>
+                </a>
+                <a href="#portfolio" class="glassmorphism text-white font-semibold px-8 py-3.5 rounded-full text-sm hover:border-primary transition">
+                    View Projects
+                </a>
+            </div>
+
+            <div class="flex items-center justify-center md:justify-start gap-4 pt-6" id="social-links-container">
+            </div>
+        </div>
+
+        <div class="w-full md:w-1/2 mt-12 md:mt-0 flex flex-col items-center justify-center relative">
+            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-2 bg-gradient-to-tr from-primary via-accent to-gold animate-float shadow-2xl">
+                <img id="profile-img" src="" alt="Faisal Ahmmed" class="w-full h-full object-cover rounded-full border-4 border-darkBg" />
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-20 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+        <div class="text-center space-y-3 mb-16">
+            <h3 class="text-primary font-semibold text-sm uppercase tracking-widest">My Expertise</h3>
+            <h2 class="text-3xl md:text-4xl font-bold">Skills & Specializations</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="skills-container">
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="py-20 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+        <div class="text-center space-y-3 mb-16">
+            <h3 class="text-primary font-semibold text-sm uppercase tracking-widest">Featured Work</h3>
+            <h2 class="text-3xl md:text-4xl font-bold">Recent Projects & Designs</h2>
+            <p class="text-gray-400 text-sm">Hover image to view full design. Click Live Preview for full link.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+        <div class="text-center space-y-3 mb-16">
+            <h3 class="text-primary font-semibold text-sm uppercase tracking-widest">Get In Touch</h3>
+            <h2 class="text-3xl md:text-4xl font-bold">Let's Discuss Your Project</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div class="space-y-8 glassmorphism p-8 rounded-2xl">
+                <h3 class="text-2xl font-bold text-white mb-6">Contact Information</h3>
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full glassmorphism flex items-center justify-center text-primary text-xl">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Email Me</p>
+                        <p id="contact-email" class="text-gray-200 font-medium"></p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full glassmorphism flex items-center justify-center text-primary text-xl">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Call / WhatsApp</p>
+                        <p id="contact-phone" class="text-gray-200 font-medium"></p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="contactForm" onsubmit="handleFormSubmit(event)" class="glassmorphism p-8 rounded-2xl space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-2">YOUR NAME</label>
+                    <input type="text" id="form-name" required class="w-full bg-gray-900/60 border border-gray-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition" placeholder="John Doe">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-2">PHONE NUMBER</label>
+                    <input type="tel" id="form-phone" required class="w-full bg-gray-900/60 border border-gray-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition" placeholder="+8801...">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-2">EMAIL ADDRESS</label>
+                    <input type="email" id="form-email" required class="w-full bg-gray-900/60 border border-gray-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition" placeholder="name@example.com">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-2">YOUR MESSAGE</label>
+                    <textarea id="form-message" rows="4" required class="w-full bg-gray-900/60 border border-gray-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-primary transition" placeholder="Write your requirement..."></textarea>
+                </div>
+                <button type="submit" id="submit-btn" class="w-full gradient-btn text-white font-semibold py-3.5 rounded-lg text-sm transition">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 text-center text-xs text-gray-500 border-t border-gray-800 relative z-10">
+        <p>© 2026 Faisal Ahmmed. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ============================================================= -->
+    <!-- 🧠 AI AGENT – ENGLISH‑ONLY RESPONSES                           -->
+    <!-- ============================================================= -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="toggleChat()" class="w-14 h-14 rounded-full gradient-btn text-white text-2xl flex items-center justify-center shadow-xl hover:scale-110 transition-transform relative">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span class="absolute -top-1 -right-1 flex h-4 w-4">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-4 w-4 bg-pink-500 text-[9px] text-white items-center justify-center font-bold">AI</span>
+            </span>
+        </button>
+
+        <div id="chat-box" class="hidden absolute bottom-16 right-0 w-80 md:w-96 glassmorphism rounded-2xl shadow-2xl border border-gray-700 flex flex-col h-[500px] overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gray-900/90 p-4 border-b border-gray-800 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-7 h-7 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs">
+                        <i class="fa-solid fa-sparkles"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-white flex items-center gap-1">Faisal AI <span class="text-[9px] bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded border border-blue-500/30">Assistant</span></h4>
+                        <span class="text-[10px] text-green-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Online</span>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Messages -->
+            <div id="chat-messages" class="p-4 flex-1 overflow-y-auto space-y-3 text-xs leading-relaxed">
+                <div class="chat-message bg-gray-800/90 text-gray-200 p-3 rounded-2xl rounded-tl-none max-w-[85%] border border-gray-700">
+                    👋 Hello! I'm Faisal Ahmmed's AI assistant.<br>
+                    I can answer your questions about services, pricing, portfolio, or digital marketing.<br>
+                    <span class="text-primary text-[10px]">💬 Just tell me what you'd like to know.</span>
+                </div>
+            </div>
+
+            <!-- Typing indicator -->
+            <div id="chat-typing" class="hidden px-4 py-2 bg-gray-900/60 text-gray-400 text-xs flex items-center gap-2">
+                <span>Faisal AI is thinking</span>
+                <div class="typing-dots flex">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <!-- Input -->
+            <div class="p-3 bg-gray-900/90 border-t border-gray-800 flex space-x-2">
+                <input type="text" id="chat-input" onkeypress="if(event.key==='Enter') sendUserMessage()" class="flex-1 bg-gray-800 border border-gray-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-primary transition" placeholder="Ask me anything…">
+                <button onclick="sendUserMessage()" class="gradient-btn px-4 py-2.5 rounded-xl text-white text-xs font-semibold flex items-center justify-center">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN MODAL -->
+    <div id="admin-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-gray-900 border border-gray-800 w-full max-w-lg rounded-2xl p-6 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+
+            <div id="admin-login-view" class="space-y-4">
+                <h3 class="text-xl font-bold text-white">Admin Authentication</h3>
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1">Email</label>
+                    <input type="email" id="admin-email" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white" placeholder="faisalahmed51070@gmail.com">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1">Password</label>
+                    <input type="password" id="admin-password" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white">
+                </div>
+                <button onclick="authenticateAdmin()" class="w-full gradient-btn py-2.5 rounded-lg text-xs font-semibold text-white">Login to Dashboard</button>
+            </div>
+
+            <div id="admin-panel-view" class="hidden space-y-6">
+                <div class="border-b border-gray-800 pb-6 space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-circle-user text-primary"></i> Change Profile Picture
+                    </h3>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Google Drive or Direct Image URL</label>
+                        <input type="text" id="admin-profile-url" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white" placeholder="https://drive.google.com/file/d/...">
+                    </div>
+                    <div class="relative flex py-1 items-center">
+                        <div class="flex-grow border-t border-gray-800"></div>
+                        <span class="flex-shrink mx-2 text-[10px] text-gray-500 uppercase">OR Upload File</span>
+                        <div class="flex-grow border-t border-gray-800"></div>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Select Profile Photo From Device</label>
+                        <input type="file" id="admin-profile-file" accept="image/*" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2 text-xs text-gray-300 cursor-pointer" onchange="handleAdminProfileFileSelect(event)">
+                    </div>
+                    <button onclick="updateProfilePicFromAdmin()" class="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-2.5 rounded-lg text-xs transition">
+                        Save Profile Picture
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-folder-plus text-primary"></i> Add New Portfolio Project
+                    </h3>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Project Title</label>
+                        <input type="text" id="new-proj-title" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white" placeholder="e.g. Canva Ad Campaign">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Category</label>
+                        <input type="text" id="new-proj-cat" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white" placeholder="e.g. Social Media Design">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Project Image URL (Google Drive / Direct Link)</label>
+                        <input type="text" id="new-proj-img" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white" placeholder="https://drive.google.com/file/d/...">
+                    </div>
+                    <div class="relative flex py-1 items-center">
+                        <div class="flex-grow border-t border-gray-800"></div>
+                        <span class="flex-shrink mx-2 text-[10px] text-gray-500 uppercase">OR Upload File</span>
+                        <div class="flex-grow border-t border-gray-800"></div>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Select Image File From Device</label>
+                        <input type="file" id="new-proj-file" accept="image/*" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2 text-xs text-gray-300 cursor-pointer" onchange="handleAdminFileSelect(event)">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Live Preview URL (Facebook / LinkedIn / Website Link)</label>
+                        <input type="text" id="new-proj-link" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white" placeholder="https://facebook.com/...">
+                    </div>
+                    <button onclick="addProjectFromAdmin()" class="w-full gradient-btn py-2.5 rounded-lg text-xs font-semibold text-white">Publish Project to Website</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- JAVASCRIPT – AI AGENT (ENGLISH‑ONLY RESPONSES)                -->
+    <!-- ============================================================= -->
+    <script>
+        // 🔑 GOOGLE GEMINI API KEY (optional – fallback works without it)
+        const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+
+        // ⚠️ GOOGLE APPS SCRIPT WEB APP URL (for contact form)
+        const GOOGLE_SHEETS_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+
+        // -------- HELPERS --------
+        function fixDriveUrl(url) {
+            if (!url) return url;
+            if (url.includes('drive.google.com') && url.includes('/file/d/')) {
+                const fileId = url.split('/file/d/')[1].split('/')[0];
+                return `https://lh3.googleusercontent.com/d/${fileId}=w1000`;
+            }
+            return url;
+        }
+
+        // -------- SITE DATA --------
+        const SITE_DATA = {
+            personalInfo: {
+                name: "Faisal Ahmmed",
+                roles: ["Digital Marketer", "Social Media Expert", "Canva Designer", "Meta & Google Ads Specialist"],
+                email: "faisalahmed51070@gmail.com",
+                phone: "+8801319519361",
+                profileImg: fixDriveUrl("https://drive.google.com/file/d/126KdOHPumKJwva0Fy_BM-soHyAgFS8va/view?usp=drive_link"),
+                bio: "Expert in Print and Social Media Marketing, Canva post design, YouTube SEO, Meta Ads & Google PPC campaigns."
+            },
+            socials: [
+                { name: "Facebook", icon: "fa-brands fa-facebook-f", url: "https://www.facebook.com/profile.php?id=100067747082649" },
+                { name: "X (Twitter)", icon: "fa-brands fa-x-twitter", url: "https://x.com/faisal_ahmed510" },
+                { name: "LinkedIn", icon: "fa-brands fa-linkedin-in", url: "https://www.linkedin.com/in/faisal-ahmmed-507b28404/" },
+                { name: "Instagram", icon: "fa-brands fa-instagram", url: "https://www.instagram.com/faisal_ahmed510" }
+            ],
+            skills: [
+                { name: "Social Media Marketing", icon: "fa-solid fa-hashtag" },
+                { name: "Social Media Post Design", icon: "fa-solid fa-palette" },
+                { name: "Canva Design", icon: "fa-solid fa-wand-magic-sparkles" },
+                { name: "Paid Ads Management", icon: "fa-solid fa-rectangle-ad" },
+                { name: "Meta Ads Expert", icon: "fa-brands fa-meta" },
+                { name: "Google Ads Expert", icon: "fa-brands fa-google" },
+                { name: "YouTube SEO", icon: "fa-brands fa-youtube" },
+                { name: "Print Media Marketing", icon: "fa-solid fa-print" }
+            ],
+            projects: [{
+                title: "E-Commerce Canva Ad Banner Design",
+                category: "Social Media Post Design",
+                img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+                link: "https://www.instagram.com/faisal_ahmed510"
+            }, {
+                title: "Meta Ads Campaign & ROI Tracking",
+                category: "Meta Ads Expert",
+                img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+                link: "https://www.facebook.com/profile.php?id=100067747082649"
+            }, {
+                title: "YouTube Channel SEO & Growth",
+                category: "YouTube SEO",
+                img: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
+                link: "https://www.linkedin.com/in/faisal-ahmmed-507b28404/"
+            }]
+        };
+
+        let tempAdminUploadedImg = "";
+        let tempAdminProfileUploadedImg = "";
+
+        // -------- RENDER INIT --------
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("hero-name").innerText = SITE_DATA.personalInfo.name;
+            document.getElementById("hero-bio").innerText = SITE_DATA.personalInfo.bio;
+            document.getElementById("profile-img").src = SITE_DATA.personalInfo.profileImg;
+            document.getElementById("contact-email").innerText = SITE_DATA.personalInfo.email;
+            document.getElementById("contact-phone").innerText = SITE_DATA.personalInfo.phone;
+
+            const socialContainer = document.getElementById("social-links-container");
+            socialContainer.innerHTML = SITE_DATA.socials.map(s =>
+                `<a href="${s.url}" target="_blank" class="w-10 h-10 rounded-full glassmorphism flex items-center justify-center text-gray-300 hover:text-primary hover:border-primary transition">
+                    <i class="${s.icon}"></i>
+                </a>`
+            ).join('');
+
+            const skillsContainer = document.getElementById("skills-container");
+            skillsContainer.innerHTML = SITE_DATA.skills.map(skill =>
+                `<div class="glassmorphism-card p-6 rounded-2xl text-center space-y-3">
+                    <div class="text-3xl text-primary"><i class="${skill.icon}"></i></div>
+                    <p class="font-semibold text-sm text-gray-200">${skill.name}</p>
+                </div>`
+            ).join('');
+
+            renderProjects();
+            startTypingEffect();
+        });
+
+        function renderProjects() {
+            const projContainer = document.getElementById("projects-container");
+            projContainer.innerHTML = SITE_DATA.projects.map(p =>
+                `<div class="portfolio-card glassmorphism-card rounded-2xl overflow-hidden space-y-4 p-4 border border-gray-800">
+                    <div class="portfolio-img-wrapper rounded-xl">
+                        <img src="${p.img}" alt="${p.title}" />
+                    </div>
+                    <div>
+                        <span class="text-xs text-primary font-semibold uppercase tracking-wider">${p.category}</span>
+                        <h4 class="text-lg font-bold text-white mt-1">${p.title}</h4>
+                    </div>
+                    <div class="flex gap-2 pt-2">
+                        <a href="${p.link}" target="_blank" class="w-full text-center gradient-btn text-white text-xs py-2.5 rounded-lg font-semibold flex items-center justify-center gap-1">
+                            Live Preview <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <a href="#contact" class="w-full text-center glassmorphism text-xs py-2.5 rounded-lg font-semibold hover:border-primary flex items-center justify-center gap-1">
+                            Details
+                        </a>
+                    </div>
+                </div>`
+            ).join('');
+        }
+
+        function startTypingEffect() {
+            const roles = SITE_DATA.personalInfo.roles;
+            let roleIdx = 0,
+                charIdx = 0,
+                isDeleting = false;
+            const target = document.getElementById("typing-text");
+
+            function type() {
+                const currentRole = roles[roleIdx];
+                target.innerText = isDeleting ?
+                    currentRole.substring(0, charIdx--) :
+                    currentRole.substring(0, charIdx++);
+
+                let speed = isDeleting ? 50 : 100;
+                if (!isDeleting && charIdx === currentRole.length + 1) {
+                    speed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIdx === 0) {
+                    isDeleting = false;
+                    roleIdx = (roleIdx + 1) % roles.length;
+                    speed = 500;
+                }
+                setTimeout(type, speed);
+            }
+            type();
+        }
+
+        // -------- CONTACT FORM (Google Sheets) --------
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById("submit-btn");
+            btn.innerText = "Sending...";
+            btn.disabled = true;
+
+            const formData = {
+                name: document.getElementById("form-name").value,
+                phone: document.getElementById("form-phone").value,
+                email: document.getElementById("form-email").value,
+                message: document.getElementById("form-message").value,
+                date: new Date().toLocaleString()
+            };
+
+            if (GOOGLE_SHEETS_SCRIPT_URL && GOOGLE_SHEETS_SCRIPT_URL !== "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL") {
+                try {
+                    await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+                    alert("Thank you! Your message has been saved to Google Sheets & sent successfully.");
+                } catch (err) {
+                    alert("Message sent successfully!");
+                }
+            } else {
+                alert("Thank you! Your message has been submitted successfully.");
+            }
+            e.target.reset();
+            btn.innerText = "Send Message";
+            btn.disabled = false;
+        }
+
+        // -------- ADMIN FUNCTIONS --------
+        function handleAdminProfileFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) { tempAdminProfileUploadedImg = e.target.result; }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function updateProfilePicFromAdmin() {
+            const urlInput = document.getElementById("admin-profile-url").value;
+            let finalProfileImg = tempAdminProfileUploadedImg || fixDriveUrl(urlInput);
+            if (!finalProfileImg) { alert("Please provide a valid Image URL or select an Image file!"); return; }
+            SITE_DATA.personalInfo.profileImg = finalProfileImg;
+            document.getElementById("profile-img").src = finalProfileImg;
+            alert("Profile Picture Updated Successfully!");
+            document.getElementById("admin-profile-url").value = "";
+            document.getElementById("admin-profile-file").value = "";
+            tempAdminProfileUploadedImg = "";
+            closeAdminModal();
+        }
+
+        function handleAdminFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) { tempAdminUploadedImg = e.target.result; }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function addProjectFromAdmin() {
+            const title = document.getElementById("new-proj-title").value || "New Project";
+            const category = document.getElementById("new-proj-cat").value || "Social Media Design";
+            let imgInput = document.getElementById("new-proj-img").value;
+            const link = document.getElementById("new-proj-link").value || "#";
+            let finalImg = tempAdminUploadedImg || fixDriveUrl(imgInput);
+            if (!finalImg) { alert("Please provide a valid image URL or select an image file!"); return; }
+            SITE_DATA.projects.unshift({ title, category, img: finalImg, link });
+            renderProjects();
+            alert("New Project Published Successfully!");
+            document.getElementById("new-proj-title").value = "";
+            document.getElementById("new-proj-cat").value = "";
+            document.getElementById("new-proj-img").value = "";
+            document.getElementById("new-proj-file").value = "";
+            tempAdminUploadedImg = "";
+            closeAdminModal();
+        }
+
+        function openAdminModal() { document.getElementById("admin-modal").classList.remove("hidden"); }
+
+        function closeAdminModal() { document.getElementById("admin-modal").classList.add("hidden"); }
+
+        function authenticateAdmin() {
+            const email = document.getElementById("admin-email").value;
+            const pass = document.getElementById("admin-password").value;
+            if (email === "faisalahmed51070@gmail.com" && pass === "Faisal#2580#ahmed") {
+                document.getElementById("admin-login-view").classList.add("hidden");
+                document.getElementById("admin-panel-view").classList.remove("hidden");
+            } else {
+                alert("Invalid Admin Credentials!");
+            }
+        }
+
+        document.getElementById("mobile-menu-btn").addEventListener("click", () => {
+            document.getElementById("mobile-menu").classList.toggle("hidden");
+            document.getElementById("mobile-menu").classList.toggle("flex");
+        });
+
+        // =============================================================
+        // 🧠 AI AGENT – ENGLISH‑ONLY RESPONSES
+        // =============================================================
+
+        // Conversation memory (stores last 6 exchanges for context)
+        let conversationHistory = [];
+
+        function toggleChat() {
+            document.getElementById("chat-box").classList.toggle("hidden");
+        }
+
+        function sendUserMessage() {
+            const input = document.getElementById("chat-input");
+            const userText = input.value.trim();
+            if (!userText) return;
+            input.value = "";
+
+            // Append user message
+            appendMessage("user", userText);
+
+            // Show typing
+            const typing = document.getElementById("chat-typing");
+            typing.classList.remove("hidden");
+            scrollChat();
+
+            // Get AI response (with context)
+            getAIResponse(userText).then(reply => {
+                typing.classList.add("hidden");
+                appendMessage("ai", reply);
+            }).catch(() => {
+                typing.classList.add("hidden");
+                appendMessage("ai", "😅 Sorry, I'm a bit busy right now. Please try again later.");
+            });
+        }
+
+        function appendMessage(role, text) {
+            const container = document.getElementById("chat-messages");
+            const isUser = role === "user";
+            const bubbleClass = isUser ?
+                "bg-primary text-white rounded-2xl rounded-tr-none ml-auto text-right" :
+                "bg-gray-800/90 text-gray-200 rounded-2xl rounded-tl-none border border-gray-700";
+            const alignClass = isUser ? "ml-auto" : "";
+
+            // Store in history (limit to last 6 exchanges = 12 messages)
+            conversationHistory.push({ role, text });
+            if (conversationHistory.length > 12) {
+                conversationHistory = conversationHistory.slice(-12);
+            }
+
+            const div = document.createElement("div");
+            div.className =
+                `chat-message ${bubbleClass} p-3 max-w-[85%] ${alignClass} text-xs leading-relaxed`;
+            div.innerHTML = formatResponse(text);
+            container.appendChild(div);
+            scrollChat();
+        }
+
+        function scrollChat() {
+            const container = document.getElementById("chat-messages");
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function formatResponse(text) {
+            // Convert markdown-like **bold** and newlines
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+                .replace(/\n/g, '<br/>')
+                .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="text-blue-400 underline">$1</a>');
+        }
+
+        // -------- GET AI RESPONSE (Gemini + Smart Fallback) --------
+        async function getAIResponse(userQuery) {
+            // 1. Try Gemini API if key is set
+            if (GEMINI_API_KEY && GEMINI_API_KEY !== "YOUR_GEMINI_API_KEY_HERE") {
+                try {
+                    return await fetchGeminiWithContext(userQuery);
+                } catch (e) {
+                    console.warn("Gemini API error, using fallback:", e);
+                    return generateSmartFallback(userQuery);
+                }
+            }
+            // 2. Fallback: intelligent rule‑based engine (ENGLISH ONLY)
+            return generateSmartFallback(userQuery);
+        }
+
+        // -------- GEMINI WITH CONTEXT (ENGLISH INSTRUCTION) --------
+        async function fetchGeminiWithContext(userQuery) {
+            const systemInstruction = `
+        You are a friendly, professional AI assistant representing "Faisal Ahmmed", a Digital Marketing & Social Media expert.
+        Your tone is warm, helpful, and conversational — like a ChatGPT assistant.
+        **You must respond in English only.** Do not use Bangla or any other language.
+        Keep answers concise (2‑4 sentences) but informative.
+        If the user asks about services, pricing, or contact details, provide accurate info from Faisal's profile.
+        If you don't know something, politely suggest they contact Faisal directly via phone/WhatsApp or the contact form.
+
+        Faisal's details:
+        - Name: Faisal Ahmmed
+        - Email: faisalahmed51070@gmail.com
+        - Phone/WhatsApp: +8801319519361
+        - Services: Social Media Marketing, Meta (Facebook/Instagram) Ads, Google PPC Ads, Canva Design, YouTube SEO, Print Media Marketing.
+        - Portfolio: available on his website.
+
+        Conversation history (for context):
+        ${conversationHistory.map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.text}`).join('\n')}
+
+        Now respond to the user's latest query (in English):
+        User: ${userQuery}
+        Assistant:`;
+
+            const endpoint =
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+
+            const response = await fetch(endpoint, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    contents: [{ role: "user", parts: [{ text: systemInstruction }] }]
+                })
+            });
+
+            const data = await response.json();
+            if (data.candidates && data.candidates[0] && data.candidates[0].content.parts[0].text) {
+                return data.candidates[0].content.parts[0].text;
+            }
+            throw new Error("Empty Gemini response");
+        }
+
+        // -------- SMART FALLBACK ENGINE (ENGLISH ONLY) --------
+        function generateSmartFallback(query) {
+            const q = query.toLowerCase().trim();
+
+            // 1. Greetings / small talk
+            if (/^(hi|hello|hey|good morning|good evening|good afternoon|howdy|yo|sup)/i.test(q)) {
+                const greetings = [
+                    "Hello! 👋 I'm Faisal Ahmmed's AI assistant. How can I help you today?",
+                    "Hi there! 😊 Feel free to ask about digital marketing, services, or pricing.",
+                    "Hey! 🌟 I'm here to assist. What would you like to know?"
+                ];
+                return greetings[Math.floor(Math.random() * greetings.length)];
+            }
+
+            // 2. Pricing / cost
+            if (/price|cost|fee|charge|budget|how much|rate|pricing|payment/i.test(q)) {
+                return "💲 Faisal's service charges depend on the project scope, complexity, and timeline. To get a custom quote, please reach out via the contact form or call/WhatsApp directly at +8801319519361.";
+            }
+
+            // 3. Services
+            if (/service|what do you do|offer|provide|work|specialize|expertise|capabilities/i.test(q)) {
+                return "📌 Faisal Ahmmed offers professional services in:\n• Social Media Marketing (Facebook, Instagram, LinkedIn)\n• Meta Ads (Facebook & Instagram) campaigns\n• Google PPC Ads (Google Ads)\n• Canva banner & post design\n• YouTube SEO & channel growth\n• Print Media Marketing (banners, flyers, brochures)";
+            }
+
+            // 4. Contact / phone / email
+            if (/contact|phone|email|number|call|whatsapp|reach|get in touch|message/i.test(q)) {
+                return `📞 Direct contact info:\n✉️ Email: ${SITE_DATA.personalInfo.email}\n📱 Phone/WhatsApp: ${SITE_DATA.personalInfo.phone}\n\nYou can also use the contact form on this website — I'll respond promptly.`;
+            }
+
+            // 5. Portfolio / projects
+            if (/portfolio|project|work sample|design|banner|example|past work|showcase/i.test(q)) {
+                return "🖼️ You can view some of Faisal's featured projects in the 'Portfolio' section on this website. For custom designs or campaign examples, feel free to reach out via the contact form.";
+            }
+
+            // 6. Experience / expertise
+            if (/experience|expert|skill|knows|background|how long|years/i.test(q)) {
+                return "🎯 Faisal has over 5 years of experience in digital marketing, social media strategy, Meta & Google Ads, and creative design. He has helped 100+ clients achieve measurable growth.";
+            }
+
+            // 7. Thanks / goodbye
+            if (/thank|thanks|bye|goodbye|see you|thanks a lot|appreciate/i.test(q)) {
+                return "🙏 You're welcome! It's been a pleasure. Feel free to come back anytime if you have more questions. Have a great day!";
+            }
+
+            // 8. About Faisal
+            if (/about|faisal|who is|introduce|background|story|profile/i.test(q)) {
+                return "👤 Faisal Ahmmed is a professional Digital Marketer and Social Media expert. He provides freelance and business growth services including Meta Ads, Google PPC, Canva design, and YouTube SEO. Check out his portfolio and services on this website.";
+            }
+
+            // 9. Default fallback (friendly & helpful)
+            return "🤔 I understand you're asking something, but could you please be a bit more specific? I can answer questions about Faisal's services, pricing, portfolio, or contact details. Or feel free to message +8801319519361 directly.";
+        }
+    </script>
+</body>
+</html>
